@@ -1,9 +1,9 @@
 <#
   .SYNOPSIS
-  Bootstrapps a Windows 10 PC with common applications and settings
+  Bootstraps a Windows 10 PC with common applications and settings
   
   .DESCRIPTION
-    The bootstrap.ps1 script contains the basic software components for a manual deployment.
+    The bootstrap.ps1 script installs the basic software components in a manual deployment.
     
     This script does not have any parameters, as it is meant to be a fully automatic process.
     
