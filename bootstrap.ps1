@@ -22,7 +22,7 @@
 
 [CmdletBinding()]                                                                                                               # Enabled advanced parameter features, such as decorator lines
 Param(                                                                                                                          # Start Parameter Bindings
-  # Customize the script for your environment                                                                                   # No parameters
+  # Customize the script for your environment. Add-WindowsCapability for OpenSSH.Server cannot be used remotely (afaik)         # No parameters
 );                                                                                                                              # End Parameter Bindings
 
 # For maximum readability, enable syntax highlighting                                                                           # # # # # # # #
@@ -33,7 +33,7 @@ $WindowsIdentity=[System.Security.Principal.WindowsIdentity]::GetCurrent();     
 $WindowsPrincipal=new-object System.Security.Principal.WindowsPrincipal($WindowsIdentity);                                      # 
 $Administrator=[System.Security.Principal.WindowsBuiltInRole]::Administrator;                                                   # 
 $Elevated=$WindowsPrincipal.IsInRole($Administrator);                                                                           # 
-# If (! $Elevated) { Write-Error "Administrative rights required! Please elevate PowerShell then try again."; exit; };          # Exit if not elevated
+If (! $Elevated) { Write-Error "Administrative rights required! Please elevate PowerShell then try again."; exit; };            # Exit if not elevated
 
 # Configure Script-Specific Settings                                                                                            # # # # # # # #
   If ($PsBoundParameters['Verbose']) { $PSVE = $TRUE; } Else {$PSVE = $FALSE; };                                                # PowerShell Verbose Execution
