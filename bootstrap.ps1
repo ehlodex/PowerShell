@@ -38,8 +38,8 @@ Set-StrictMode -Version Latest                                                  
   If ($PsBoundParameters['Debug'])   { $PWSHDE = $TRUE; } Else {$PWSHDE = $FALSE; };                                            # PowerShell Debug Execution
   # Python3 Arguments                                                                                                           # #
   $Python3Path          = "C:\Apps\Python3"; # No trailing slash. Unused. Add 'TARGETDIR=$Python3Path' to Python3Arguments.     # Default: C:\Program Files\Python3
-  $Python3Arguments     = "INCLUDE_DOC=0 INCLUDE_LAUNCHER=0 INCLUDE_TCLTK=0 INCLUDE_TEST=0 INSTALLALLUSERS=1 PREPENDPATH=1 ";   #
-  $Python3Arguments    += "SHORTCUTS=0"; # TARGETDIR=$Python3Path";                                                             #
+  $Python3Arguments     = "Include_doc=0 Include_launcher=0 Include_tcltk=0 Include_test=0 InstallAllUsers=1 PrependPath=1 ";   #
+  $Python3Arguments    += "Shortcuts=0"; # TargetDir=$Python3Path";                                                             #
   # PowerShell Core Arguments                                                                                                   # #
   $PowerShellPath       = "C:\Apps\PowerShell"; # No trailing slash. Also used in sshd_config !                                 # Default: C:\Program Files\Powershell
   $PowerShellArguments  = "ADD_EXPLORER_CONTEXT_MENU_OPENPOWERSHELL=0 ENABLE_PSREMOTING=1 REGISTER_MANIFEST=1 ";                #
