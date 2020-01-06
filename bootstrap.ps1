@@ -178,3 +178,28 @@ Match Group administrators
 "@
 $sshd_config | Set-Content -Path C:\ProgramData\ssh\sshd_config;                                                                # Replace the original sshd_config
 Start-Service -Name sshd; Set-Service -Name sshd -StartupType Automatic                                                         # Enable and start the sshd service (server)
+
+## TODO: Cleanup and clarify the following code.
+## TODO: Add functions to add/remove each section, just just remove.
+## TODO: Add documentation / comments
+
+$WindowsOptionalFeatures = @("WorkFolders-Client")
+ForEach ($OptionalFeature in $WindowsOptionalFeatures) {
+  Get-WindowsOptionalFeature -Online | 
+    Where-Object {$_.Name -like "*$OptionalFeature*"} | 
+      Disable-WindowsOptionalFeature -Online
+}
+
+$WindowsCapabilities = @("Browser.InternetExplorer", "Hello.Face", "SNMP.Client", "WMI-SNMP-Provider.Client", "XPS.Viewer")
+ForEach ($Capability in $WindowsCapabilities) {
+  Get-WindowsCapability -Online | 
+    Where-Object {($_.Name -like "*$Capability*") -and ($_.State -eq 'Installed')} |
+      Remove-WindowsCapability -Online
+}
+
+$AppxPackages = @("GetStarted", "Microsoft3DViewer", "MixedReality", "OneConnect", "OneNote", "Print3D", "SkypeApp", "WindowsCommunicationsApps", "WindowsFeedbackHub", "ZuneMusic")
+ForEach ($Package in $AppxPackages) {
+  Get-AppxPackage -AllUsers | 
+    Where-Object {$_.Name -like "*$Package*"} |
+      Remove-AppxPackage -AllUsers
+}
