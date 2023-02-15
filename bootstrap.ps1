@@ -56,7 +56,7 @@ Register-ScheduledTask -User SYSTEM -RunLevel Highest -Verbose:$PSVE -Debug:$PSD
   -Action $SchTaskAction `
   -Trigger $SchTaskTrigger `
   -Settings $SchTaskSettings `
-  -TaskPath "LCTABUS" `
+  -TaskPath "CUSTOM" `
   -TaskName "Chocolatey Upgrade Daemon" `
   -Description "Unattended upgrade for chocolatey apps"
 
@@ -99,6 +99,7 @@ ForEach ($Printer in $RemovePrinters) {
   Remove-Printer -Name "*$Printer*" -Confirm:$FALSE -Verbose:$PSVE -Debug:$PSDE
 }
 
+Set-Volume -DriveLetter C -NewFileSystemLabel "$($env:ComputerName)"
 Remove-Item -Path "C:\Apps\bootstrap.ps1" -ErrorAction SilentlyContinue -Verbose:$PSVE -Debug:$PSDE
 
 If ($Restart) { 
