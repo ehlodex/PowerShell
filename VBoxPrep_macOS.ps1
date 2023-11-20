@@ -25,7 +25,7 @@ REM #### BATCH VERSION ####
 REM # The VM display name in VirtualBox:
 set VM="macOS"
 REM # Full path to VBoxManage.exe:
-set VboxManage="C:\Program Files\Oracle\VirtualBox\VBoxManage.exe"
+set VBoxManage="C:\Program Files\Oracle\VirtualBox\VBoxManage.exe"
 %VBoxManage% modifyvm %VM% --cpuidset 00000001 000106e5 00100800 0098e3fd bfebfbff
 %VBoxManage% setextradata %VM% "VBoxInternal/Devices/efi/0/Config/DmiSystemProduct" "iMac19,1"
 %VBoxManage% setextradata %VM% "VBoxInternal/Devices/efi/0/Config/DmiSystemVersion" "1.0"
