@@ -17,13 +17,15 @@ Set-StrictMode -Version Latest
 & $VBoxManage setextradata "$VM" "VBoxInternal/Devices/smc/0/Config/DeviceKey" "ourhardworkbythesewordsguardedpleasedontsteal(c)AppleComputerInc"
 & $VBoxManage setextradata "$VM" "VBoxInternal/Devices/smc/0/Config/GetKeyFromRealSMC" 1
 & $VBoxManage setextradata "$VM" "VBoxInternal/TM/TSCMode" "RealTSCOffset"
-& $VBoxManage setextradata "$VM" "VBoxInternal2/EfiGraphicsResolution" "$RES"
+& $VBoxManage setextradata "$VM" "VBoxInternal2/EfiGraphicsResolution" "$GuestResolution"
 
 <#
 @ECHO OFF
 REM #### BATCH VERSION ####
 REM # The VM display name in VirtualBox:
 set VM="macOS"
+REM # Guest resolution
+set GuestResolution=144x900
 REM # Full path to VBoxManage.exe:
 set VBoxManage="C:\Program Files\Oracle\VirtualBox\VBoxManage.exe"
 %VBoxManage% modifyvm %VM% --cpuidset 00000001 000106e5 00100800 0098e3fd bfebfbff
@@ -33,5 +35,5 @@ set VBoxManage="C:\Program Files\Oracle\VirtualBox\VBoxManage.exe"
 %VBoxManage% setextradata %VM% "VBoxInternal/Devices/smc/0/Config/DeviceKey" "ourhardworkbythesewordsguardedpleasedontsteal(c)AppleComputerInc"
 %VBoxManage% setextradata %VM% "VBoxInternal/Devices/smc/0/Config/GetKeyFromRealSMC" 1
 %VBoxManage% setextradata %VM% "VBoxInternal/TM/TSCMode" "RealTSCOffset"
-%VBoxManage% setextradata %VM% "VBoxInternal2/EfiGraphicsResolution" "$RES"
+%VBoxManage% setextradata %VM% "VBoxInternal2/EfiGraphicsResolution" "%GuestResolution%"
 #>
